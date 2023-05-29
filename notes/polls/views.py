@@ -13,8 +13,9 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """ Returns the last 5 published questions - future date is excluded """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        """ Returns the recent published questions - future date is excluded """
+
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 
 class DetailView(generic.DetailView):
